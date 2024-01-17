@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using WeatherForecast.CommonData.Models;
 using WeatherForecast.CommonData.RabbitQueue;
 
@@ -22,7 +22,7 @@ namespace WeatherForecast.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]IEnumerable<WeatherForecastRequest> request)
+        public async Task<IActionResult> Post([FromBody]List<WeatherForecastRequest> request)
         {
             if (request == null)
             {
