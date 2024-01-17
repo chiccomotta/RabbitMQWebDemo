@@ -8,7 +8,16 @@ using RabbitMQ.Client.Events;
 namespace WeatherForecast.CommonData.RabbitQueue
 {
     /*
+        Esempio di implementazione di RabbitMq in un progetto Web Api .NET 8
+        
         https://medium.com/@jaroslawjaniszewski/asp-net-core-web-api-with-rabbitmq-for-beginners-2afe0b12c761
+       
+        Start RabbitMQ Docker image:
+        docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+       
+        RabbitMQ control panel: http://localhost:15672
+         - usr: guest
+         - pwd: guest
     
         RabbitBus class has two generic asynchronous methods SendAsync and ReceiveAsync 
         that responsible for communication with RabbitMq.
