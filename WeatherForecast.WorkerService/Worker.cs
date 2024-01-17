@@ -1,8 +1,8 @@
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using WeatherForecast.CommonData.Models;
 using WeatherForecast.CommonData.RabbitQueue;
 
@@ -12,6 +12,7 @@ namespace WeatherForecast.WorkerService
     {
         private readonly ILogger<Worker> _logger;
         private readonly IBus _busControl;
+        
         public Worker(ILogger<Worker> logger)
         {
             _logger = logger;
