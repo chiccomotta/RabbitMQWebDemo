@@ -1,9 +1,9 @@
-﻿using System;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace WeatherForecast.CommonData.RabbitQueue
 {
@@ -31,7 +31,7 @@ namespace WeatherForecast.CommonData.RabbitQueue
         Then it created an event that fired when a delivery arrives for the consumer. 
         When a message is received, its deserialize and passing as a parameter to delegate a method.
     */
-    
+
     public class RabbitBus : IBus
     {
         private readonly IModel _channel;
@@ -59,6 +59,7 @@ namespace WeatherForecast.CommonData.RabbitQueue
         {
             _channel.QueueDeclare(queue, true, false, false);
             var consumer = new AsyncEventingBasicConsumer(_channel);
+            
             consumer.Received += async (s, e) =>
             {
                 var jsonSpecified = Encoding.UTF8.GetString(e.Body.Span);
@@ -66,6 +67,7 @@ namespace WeatherForecast.CommonData.RabbitQueue
                 onMessage(item);
                 await Task.Yield();
             };
+            
             _channel.BasicConsume(queue, true, consumer);
             await Task.Yield();
         }

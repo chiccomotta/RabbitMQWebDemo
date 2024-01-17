@@ -16,7 +16,7 @@ namespace WeatherForecast.WorkerService
         public WorkerSecondQueue(ILogger<WorkerSecondQueue> logger)
         {
             _logger = logger;
-            _busControl = RabbitHutch.CreateBus("localhost");
+            _busControl = RabbitManager.CreateBus("localhost");
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

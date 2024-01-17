@@ -2,7 +2,7 @@
 
 namespace WeatherForecast.CommonData.RabbitQueue
 {
-    public class RabbitHutch
+    public class RabbitManager
     {
         private static ConnectionFactory _factory;
         private static IConnection _connection;

@@ -6,30 +6,29 @@ using System.Threading.Tasks;
 using WeatherForecast.CommonData.Models;
 using WeatherForecast.CommonData.RabbitQueue;
 
-namespace WeatherForecast.WorkerService
-{
-    public class Worker : BackgroundService
-    {
-        private readonly ILogger<Worker> _logger;
-        private readonly IBus _busControl;
-        
-        public Worker(ILogger<Worker> logger)
-        {
-            _logger = logger;
-            _busControl = RabbitHutch.CreateBus("localhost");
-        }
+namespace WeatherForecast.WorkerService;
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+public class Worker : BackgroundService
+{
+    private readonly ILogger<Worker> _logger;
+    private readonly IBus _busControl;
+        
+    public Worker(ILogger<Worker> logger)
+    {
+        _logger = logger;
+        _busControl = RabbitManager.CreateBus("localhost");
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        await _busControl.ReceiveAsync<IEnumerable<WeatherForecastRequest>>(Queue.Processing, request =>
         {
-            await _busControl.ReceiveAsync<IEnumerable<WeatherForecastRequest>>(Queue.Processing, request =>
+            Task.Run(() =>
             {
-                Task.Run(() =>
+                foreach (var weatherForecast in request)
                 {
-                    foreach (var weatherForecast in request)
-                    {
-                        _logger.LogInformation($"Location: {weatherForecast.Location}, date: {weatherForecast.Date}, {weatherForecast.TemperatureC}°C, {weatherForecast.TemperatureF}°F, Summary: {weatherForecast.Summary}");
-                    }                }, stoppingToken);
-            });
-        }
+                    _logger.LogInformation($"Location: {weatherForecast.Location}, date: {weatherForecast.Date}, {weatherForecast.TemperatureC}°C, {weatherForecast.TemperatureF}°F, Summary: {weatherForecast.Summary}");
+                }                }, stoppingToken);
+        });
     }
 }

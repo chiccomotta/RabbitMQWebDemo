@@ -33,7 +33,7 @@ namespace WeatherForecast.Api
                 services.AddControllers();
 
             // Rabbit Dependency injection
-            services.AddSingleton(sp => RabbitHutch.CreateBus("localhost"));
+            services.AddSingleton(sp => RabbitManager.CreateBus("localhost"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.415
