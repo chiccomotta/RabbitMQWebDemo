@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Api", "WeatherForecast.Api\WeatherForecast.Api.csproj", "{D44ABDD5-1FCD-45AE-B9D8-AC3C7D5F4593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.Api", "WeatherForecast.Api\WeatherForecast.Api.csproj", "{D44ABDD5-1FCD-45AE-B9D8-AC3C7D5F4593}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.CommonData", "WeatherForecast.CommonData\WeatherForecast.CommonData.csproj", "{9673F7C2-43B8-435D-AD64-803CE4ABE870}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.CommonData", "WeatherForecast.CommonData\WeatherForecast.CommonData.csproj", "{9673F7C2-43B8-435D-AD64-803CE4ABE870}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.WorkerService", "WeatherForecast.WorkerService\WeatherForecast.WorkerService.csproj", "{660CC229-40A2-43AE-9B1B-2587BB7B90BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecast.WorkerService", "WeatherForecast.WorkerService\WeatherForecast.WorkerService.csproj", "{660CC229-40A2-43AE-9B1B-2587BB7B90BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F069F295-9F86-43C5-AC42-4A532E3A0195}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
