@@ -25,9 +25,9 @@ namespace WeatherForecast.WorkerService
             {
                 Task.Run(() =>
                 {
-                    foreach (var weatherForecast in request)
+                    foreach (var wf in request)
                     {
-                        _logger.LogInformation($"Location: {weatherForecast.Location}, date: {weatherForecast.Date}, {weatherForecast.TemperatureC}°C, {weatherForecast.TemperatureF}°F, Summary: {weatherForecast.Summary}");
+                        _logger.LogInformation($"Location: {wf.Location}, date: {wf.Date}, {wf.TemperatureC}°C, {wf.TemperatureF}°F, Summary: {wf.Summary}");
                     }                }, stoppingToken);
             });
         }
